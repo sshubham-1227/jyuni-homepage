@@ -12,16 +12,13 @@ export function PricingTiers() {
   const tiers = [
     {
       name: "Starter",
-      description: "Perfect for small practices getting started",
-      monthlyPrice: 89,
-      annualPrice: 79,
+      description: "Suitable for solo practitioners or small practices",
+      monthlyPrice: 19,
+      annualPrice: 12.15,
       features: [
-        "Up to 3 providers",
-        "Basic scheduling & notes",
+        "Scheduling for sessions",
+        "Data collection and tracking",
         "Standard data collection",
-        "Email support",
-        "HIPAA compliance",
-        "Mobile app access",
       ],
       cta: "Start Free Trial",
       popular: false,
@@ -29,17 +26,13 @@ export function PricingTiers() {
     {
       name: "Growth",
       description: "Ideal for growing practices with advanced needs",
-      monthlyPrice: 149,
-      annualPrice: 129,
+      monthlyPrice: 29,
+      annualPrice: 24.65,
       features: [
-        "Up to 10 providers",
-        "Advanced workflows & automation",
-        "Custom data collection forms",
-        "Billing & claims management",
-        "Parent portal & e-signatures",
-        "Priority support",
-        "Advanced reporting",
-        "API integrations",
+        "Everything in Starter",
+        "Billing and invoicing",
+        "Advanced reporting and insights",
+        "Built for growing ABA practices",
       ],
       cta: "Start Free Trial",
       popular: true,
@@ -47,17 +40,14 @@ export function PricingTiers() {
     {
       name: "Scale",
       description: "Enterprise solution for large practices",
-      monthlyPrice: 249,
-      annualPrice: 219,
+      monthlyPrice: 0,
+      annualPrice: 0,
       features: [
-        "Unlimited providers",
-        "Multi-location support",
-        "Custom integrations",
-        "Dedicated account manager",
-        "Advanced analytics",
-        "Custom training",
-        "SLA guarantee",
-        "White-label options",
+        "Everything in Growth",
+        "Custom pricing for large teams",
+        "Dedicated account manager and onboarding support",
+        "Tailored integrations and compliance features",
+        "Priority support",
       ],
       cta: "Talk to Sales",
       popular: false,
@@ -69,10 +59,10 @@ export function PricingTiers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Billing Toggle */}
         <div className="flex items-center justify-center gap-4 mb-12">
-          <span className={`text-sm ${!isAnnual ? "text-foreground" : "text-muted-foreground"}`}>Monthly</span>
+          <span className={`text-sm ${!isAnnual ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-400"}`}>Monthly</span>
           <Switch checked={isAnnual} onCheckedChange={setIsAnnual} />
-          <span className={`text-sm ${isAnnual ? "text-foreground" : "text-muted-foreground"}`}>Annual</span>
-          {isAnnual && <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">Save 15%</span>}
+          <span className={`text-sm ${isAnnual ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-400"}`}>Annual</span>
+          {isAnnual && <span className="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">Save 15%</span>}
         </div>
 
         {/* Pricing Cards */}
@@ -81,8 +71,8 @@ export function PricingTiers() {
             <Card
               key={index}
               className={`relative p-8 ${
-                tier.popular ? "border-primary shadow-lg scale-105" : "glass-card hover:shadow-lg"
-              } transition-all duration-300`}
+                tier.popular ? "border-blue-500 shadow-lg scale-105" : "bg-white dark:bg-slate-800 hover:shadow-lg"
+              } transition-all duration-300 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600`}
             >
               {tier.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -94,19 +84,25 @@ export function PricingTiers() {
               )}
 
               <div className="text-center mb-8">
-                <h3 className="font-serif font-bold text-2xl mb-2">{tier.name}</h3>
-                <p className="text-muted-foreground text-sm mb-6">{tier.description}</p>
+                <h3 className="font-serif font-bold text-2xl mb-2 text-slate-900 dark:text-white">{tier.name}</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-sm mb-6">{tier.description}</p>
 
                 <div className="mb-6">
-                  <span className="text-4xl font-bold">${isAnnual ? tier.annualPrice : tier.monthlyPrice}</span>
-                  <span className="text-muted-foreground">/provider/month</span>
+                  {tier.name === "Scale" ? (
+                    <span className="text-2xl font-bold text-slate-900 dark:text-white">Contact Sales</span>
+                  ) : (
+                    <>
+                      <span className="text-4xl font-bold text-slate-900 dark:text-white">${isAnnual ? tier.annualPrice : tier.monthlyPrice}</span>
+                      <span className="text-slate-600 dark:text-slate-400">/provider/month</span>
+                    </>
+                  )}
                 </div>
 
                 <Button
                   className={`w-full ${
                     tier.popular
-                      ? "gradient-bg hover:opacity-90"
-                      : "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                      ? "gradient-bg hover:opacity-90 text-white"
+                      : "border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
                   } transition-all`}
                   variant={tier.popular ? "default" : "outline"}
                 >
@@ -117,8 +113,8 @@ export function PricingTiers() {
               <ul className="space-y-3">
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
+                    <CheckCircle className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -128,8 +124,8 @@ export function PricingTiers() {
 
         {/* Enterprise CTA */}
         <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-4">Need a custom solution for your enterprise practice?</p>
-          <Button variant="outline" size="lg">
+          <p className="text-slate-600 dark:text-slate-300 mb-4">Need a custom solution for your enterprise practice?</p>
+          <Button variant="outline" size="lg" className="border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white">
             Contact Enterprise Sales
           </Button>
         </div>

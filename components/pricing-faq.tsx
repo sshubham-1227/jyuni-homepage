@@ -33,18 +33,18 @@ export function PricingFAQ() {
   ]
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-white dark:bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-serif font-bold text-3xl lg:text-4xl mb-4">Frequently asked questions</h2>
-          <p className="text-muted-foreground">Have a question not covered here? Contact our support team.</p>
+          <h2 className="font-serif font-bold text-3xl lg:text-4xl mb-4 text-slate-900 dark:text-white">Frequently asked questions</h2>
+          <p className="text-slate-600 dark:text-slate-300">Have a question not covered here? Contact our support team.</p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="glass-card px-6 border-0 rounded-lg">
-              <AccordionTrigger className="text-left hover:no-underline">{faq.question}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed">{faq.answer}</AccordionContent>
+            <AccordionItem key={index} value={`item-${index}`} className="bg-white dark:bg-slate-800 px-6 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg hover:border-slate-300 dark:hover:border-slate-600 transition-colors duration-200">
+              <AccordionTrigger className="text-left hover:no-underline text-slate-900 dark:text-white">{faq.question}</AccordionTrigger>
+              <AccordionContent className="text-slate-600 dark:text-slate-300 leading-relaxed">{faq.answer}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

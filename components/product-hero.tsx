@@ -1,6 +1,6 @@
 export function ProductHero() {
   return (
-    <section className="relative flex items-center justify-center py-24 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100 dark:bg-slate-900">
+    <section className="relative flex items-center justify-center py-24 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100 dark:bg-slate-900 -mt-8 md:mt-0">
       {/* Background */}
       <div className="absolute inset-0 gradient-subtle-bg" />
       <div

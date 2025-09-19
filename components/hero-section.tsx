@@ -9,7 +9,7 @@ import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100 dark:bg-slate-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100 dark:bg-slate-900 -mt-8 md:mt-0">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-subtle-bg" />
 
@@ -34,7 +34,7 @@ export function HeroSection() {
               </h1>
 
               <p className="text-xl text-slate-600 dark:text-slate-400 text-pretty mb-8 leading-relaxed">
-                Scheduling, notes, data collection, billing, and family engagement in one secure platform.
+                Scheduling, notes, data collection, billing, and family engagement in one <span className="font-semibold text-blue-600 dark:text-blue-400">HIPAA-compliant</span> platform.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

@@ -15,17 +15,17 @@ export function Footer() {
   ]
 
   const companyLinks = [
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-    { name: "Security", href: "/security" },
+    { name: "About", href: "/product" },
+    { name: "Contact", href: "/product" },
+    { name: "Security", href: "/product" },
   ]
 
 
   const legalLinks = [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
-    { name: "HIPAA Compliance", href: "/security" },
+    { name: "Privacy Policy", href: "/product" },
+    { name: "Terms of Service", href: "/product" },
+    { name: "Cookie Policy", href: "/product" },
+    { name: "HIPAA Compliance", href: "/product" },
   ]
 
   return (

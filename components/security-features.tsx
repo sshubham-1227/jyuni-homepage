@@ -46,13 +46,13 @@ export function SecurityFeatures() {
   ]
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-serif font-bold text-3xl lg:text-4xl text-balance mb-4">
+          <h2 className="font-serif font-bold text-3xl lg:text-4xl text-balance mb-4 text-slate-900 dark:text-white">
             Enterprise-grade security for healthcare
           </h2>
-          <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-400 text-pretty max-w-3xl mx-auto">
             We understand the critical importance of protecting PHI. Our security measures exceed industry standards.
           </p>
         </div>
@@ -63,14 +63,14 @@ export function SecurityFeatures() {
             return (
               <Card
                 key={index}
-                className="glass-card p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 mb-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 mb-4">
+                    <Icon className="h-6 w-6 text-blue-500" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+                  <h3 className="font-semibold text-lg mb-3 text-slate-900 dark:text-white">{feature.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </Card>
             )

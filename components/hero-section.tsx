@@ -43,7 +43,7 @@ export function HeroSection() {
                   className="gradient-bg hover:opacity-90 hover:scale-105 transition-all duration-300 text-white"
                   asChild
                 >
-                  <Link href="https://calendly.com/shubham-jyuni/jyuni-demo">Book a Demo</Link>
+                  <Link href="/book-a-demo">Book a Demo</Link>
                 </Button>
                 <Button
                   size="lg"

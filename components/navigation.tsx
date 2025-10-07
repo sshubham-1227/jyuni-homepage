@@ -107,6 +107,14 @@ export function Navigation() {
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             <Button
+              variant="outline"
+              size="sm"
+              className="text-sm font-medium px-4 py-1.5 rounded-full text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-700 dark:hover:text-blue-300 border-blue-200 dark:border-blue-800"
+              asChild
+            >
+              <Link href="https://app.jyuni.com/login">Login</Link>
+            </Button>
+            <Button
               className="gradient-bg text-white font-medium px-4 py-1.5 text-sm rounded-full hover:opacity-90 transition-all duration-200 shadow-md hover:shadow-lg"
               asChild
             >
@@ -158,7 +166,16 @@ export function Navigation() {
               >
                 Docs
               </Link>
-              <div className="pt-4 border-t border-border">
+              <div className="pt-4 border-t border-border space-y-3">
+                <Button
+                  variant="outline"
+                  className="w-full text-base py-3 rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-700 dark:hover:text-blue-300 border-blue-200 dark:border-blue-800"
+                  asChild
+                >
+                  <Link href="https://app.jyuni.com/login" onClick={() => setIsMobileMenuOpen(false)}>
+                    Login
+                  </Link>
+                </Button>
                 <Button
                   className="w-full gradient-bg text-white font-medium text-base py-3 rounded-xl hover:opacity-90 transition-all duration-200 shadow-md"
                   asChild

@@ -24,7 +24,7 @@ export function HeroSection() {
       {/* Text overlay for better readability */}
       <div className="absolute inset-0 bg-white/20 dark:bg-slate-900/50" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-24 lg:pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <FadeInSection>
@@ -58,7 +58,7 @@ export function HeroSection() {
 
           {/* Right visual - Dashboard mockup */}
           <FadeInSection delay={200}>
-            <div className="relative">
+            <div className="relative pb-8">
               <div className="grid grid-cols-2 gap-4 transform rotate-3 hover:rotate-1 transition-transform duration-700">
                 {/* Sessions Card */}
                 <div className="animate-float" style={{ animationDelay: "0s" }}>

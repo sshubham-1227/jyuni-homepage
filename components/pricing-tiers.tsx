@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { CheckCircle, Star } from "lucide-react"
+import Link from "next/link"
 
 export function PricingTiers() {
   const [isAnnual, setIsAnnual] = useState(false)
@@ -14,11 +15,10 @@ export function PricingTiers() {
       name: "Starter",
       description: "Suitable for solo practitioners or small practices",
       monthlyPrice: 19,
-      annualPrice: 12.15,
+      annualPrice: 209,
       features: [
         "Scheduling for sessions",
         "Data collection and tracking",
-        "Standard data collection",
       ],
       cta: "Start Free Trial",
       popular: false,
@@ -27,7 +27,7 @@ export function PricingTiers() {
       name: "Growth",
       description: "Ideal for growing practices with advanced needs",
       monthlyPrice: 29,
-      annualPrice: 24.65,
+      annualPrice: 319,
       features: [
         "Everything in Starter",
         "Billing and invoicing",
@@ -49,7 +49,7 @@ export function PricingTiers() {
         "Tailored integrations and compliance features",
         "Priority support",
       ],
-      cta: "Talk to Sales",
+      cta: "Contact Sales",
       popular: false,
     },
   ]
@@ -62,7 +62,7 @@ export function PricingTiers() {
           <span className={`text-sm ${!isAnnual ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-400"}`}>Monthly</span>
           <Switch checked={isAnnual} onCheckedChange={setIsAnnual} />
           <span className={`text-sm ${isAnnual ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-400"}`}>Annual</span>
-          {isAnnual && <span className="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">Save 15%</span>}
+          {isAnnual && <span className="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">1 month free</span>}
         </div>
 
         {/* Pricing Cards */}
@@ -93,7 +93,7 @@ export function PricingTiers() {
                   ) : (
                     <>
                       <span className="text-4xl font-bold text-slate-900 dark:text-white">${isAnnual ? tier.annualPrice : tier.monthlyPrice}</span>
-                      <span className="text-slate-600 dark:text-slate-400">/provider/month</span>
+                      <span className="text-slate-600 dark:text-slate-400">/provider/{isAnnual ? "year" : "month"}</span>
                     </>
                   )}
                 </div>
@@ -105,8 +105,11 @@ export function PricingTiers() {
                       : "border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
                   } transition-all`}
                   variant={tier.popular ? "default" : "outline"}
-                >
-                  {tier.cta}
+                  asChild
+                >                  
+                  <Link href={tier.name === "Scale" ? "mailto:contact@jyuni.com" : "https://app.jyuni.com/signup"}>
+                    {tier.cta}
+                  </Link>
                 </Button>
               </div>
 
@@ -120,14 +123,6 @@ export function PricingTiers() {
               </ul>
             </Card>
           ))}
-        </div>
-
-        {/* Enterprise CTA */}
-        <div className="text-center mt-16">
-          <p className="text-slate-600 dark:text-slate-300 mb-4">Need a custom solution for your enterprise practice?</p>
-          <Button variant="outline" size="lg" className="border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white">
-            Contact Enterprise Sales
-          </Button>
         </div>
       </div>
     </section>

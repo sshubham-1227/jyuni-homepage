@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useInView } from "react-intersection-observer"
-import { RequestEarlyAccess } from "@/components/request-early-access"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function BotIllustration() {
   const [slackTypedText, setSlackTypedText] = useState("")
@@ -173,23 +174,42 @@ export function BotIllustration() {
   }, [inView])
 
   return (
-    <section ref={ref} className="py-24 bg-white dark:bg-slate-900">
+    <section ref={ref} className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-serif font-bold text-3xl lg:text-4xl text-slate-900 dark:text-white mb-4">
-            Works Seamlessly in Your Existing Tools
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            No new apps to learn. Jyuni integrates directly into Slack and Microsoft Teams with simple commands.
-          </p>
+        <div className="mb-8">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="font-serif font-bold text-3xl lg:text-4xl text-slate-900 dark:text-white mb-4">
+                Works Seamlessly in Your Existing Tools
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto md:mx-0">
+                No new apps to learn. Jyuni integrates directly into Slack and Microsoft Teams with simple commands.
+              </p>
+            </div>
+            <div className="flex items-center justify-center md:justify-end">
+              <Button
+                size="lg"
+                className="gradient-bg hover:opacity-90 hover:scale-105 transition-all duration-300 text-white shrink-0 w-full md:w-auto"
+                asChild
+              >
+                <Link 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfkj28cmInEqAJuYcaS_f4wH5KJmnF-1AW3AfBuk2vp4aBbzQ/viewform?usp=dialog" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Request Early Access
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-4 lg:gap-6">
           {/* Slack Mockup */}
-          <div className="relative">
+          <div className="relative w-full md:w-auto md:flex-1">
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700">
               {/* Slack Header */}
-              <div className="bg-[#4A154B] px-4 py-3 flex items-center justify-between border-b border-[#5A1F5C]">
+              <div className="bg-[#4A154B] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b border-[#5A1F5C]">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded bg-white/20 flex items-center justify-center">
                     <svg className="w-5 h-5" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
@@ -207,9 +227,9 @@ export function BotIllustration() {
                 </div>
               </div>
 
-              <div className="flex h-[500px]">
+              <div className="flex h-[400px] sm:h-[450px] md:h-[500px]">
                 {/* Slack Sidebar */}
-                <div className="w-48 bg-[#350D36] border-r border-[#5A1F5C]">
+                <div className="hidden sm:block w-32 md:w-48 bg-[#350D36] border-r border-[#5A1F5C]">
                   <div className="p-2 border-b border-[#5A1F5C]">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-7 h-7 rounded bg-[#611F69] flex items-center justify-center flex-shrink-0">
@@ -273,7 +293,7 @@ export function BotIllustration() {
                 {/* Slack Main Content */}
                 <div className="flex-1 flex flex-col bg-white dark:bg-slate-800">
                   {/* Messages Area */}
-                  <div className="flex-1 p-4 space-y-4 overflow-y-auto">
+                  <div className="flex-1 p-3 sm:p-4 space-y-4 overflow-y-auto">
                     {/* User message */}
                     {slackMessageSent && (
                       <div className="flex gap-3">
@@ -303,7 +323,7 @@ export function BotIllustration() {
                         </div>
                         <div className="flex-1">
                           <div className="flex items-baseline gap-2 mb-1">
-                            <span className="font-semibold text-slate-900 dark:text-white text-sm">jyuni</span>
+                            <span className="font-semibold text-slate-900 dark:text-white text-sm">Jyuni</span>
                             <span className="text-xs text-slate-500 dark:text-slate-400">2:36 PM</span>
                           </div>
                           <div className="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg p-3 shadow-sm">
@@ -328,7 +348,7 @@ export function BotIllustration() {
                   </div>
 
                   {/* Input Area */}
-                  <div className="border-t border-slate-200 dark:border-slate-700 p-4">
+                  <div className="border-t border-slate-200 dark:border-slate-700 p-3 sm:p-4">
                     <div className="flex items-center gap-2">
                       <div className="flex-1 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg px-4 py-2">
                         <div className="flex items-center">
@@ -350,11 +370,16 @@ export function BotIllustration() {
             </div>
           </div>
 
+          {/* Or divider */}
+          <div className="flex items-center justify-center my-2 md:my-0 w-4 flex-shrink-0">
+            <span className="text-md font-medium text-slate-600 dark:text-slate-300">or</span>
+          </div>
+
           {/* Teams Mockup */}
-          <div className="relative">
+          <div className="relative w-full md:w-auto md:flex-1">
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700">
               {/* Teams Header */}
-              <div className="bg-[#464EB8] px-4 py-3 flex items-center justify-between border-b border-[#3B42A3]">
+              <div className="bg-[#464EB8] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b border-[#3B42A3]">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded bg-white/20 flex items-center justify-center">
                     <svg className="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
@@ -391,9 +416,9 @@ export function BotIllustration() {
                 </div>
               </div>
 
-              <div className="flex h-[500px]">
+              <div className="flex h-[400px] sm:h-[450px] md:h-[500px]">
                 {/* Teams Sidebar */}
-                <div className="w-48 bg-[#F3F2F1] dark:bg-[#252423] border-r border-slate-200 dark:border-slate-700">
+                <div className="hidden sm:block w-32 md:w-48 bg-[#F3F2F1] dark:bg-[#252423] border-r border-slate-200 dark:border-slate-700">
                   <div className="p-2 border-b border-slate-200 dark:border-slate-700">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-7 h-7 rounded bg-[#464EB8] flex items-center justify-center flex-shrink-0">
@@ -438,7 +463,7 @@ export function BotIllustration() {
                 {/* Teams Main Content */}
                 <div className="flex-1 flex flex-col bg-white dark:bg-slate-800">
                   {/* Messages Area */}
-                  <div className="flex-1 p-4 space-y-4 overflow-y-auto">
+                  <div className="flex-1 p-3 sm:p-4 space-y-4 overflow-y-auto">
                     {/* User message */}
                     {teamsMessageSent && (
                       <div className="flex gap-3">
@@ -465,7 +490,7 @@ export function BotIllustration() {
                         </div>
                         <div className="flex-1">
                           <div className="flex items-baseline gap-2 mb-1">
-                            <span className="font-semibold text-slate-900 dark:text-white text-sm">Jyuni Bot</span>
+                            <span className="font-semibold text-slate-900 dark:text-white text-sm">Jyuni</span>
                             <span className="text-xs text-slate-500 dark:text-slate-400">2:36 PM</span>
                           </div>
                           <div className="bg-[#F3F2F1] dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg p-3">
@@ -490,7 +515,7 @@ export function BotIllustration() {
                   </div>
 
                   {/* Input Area */}
-                  <div className="border-t border-slate-200 dark:border-slate-700 p-4">
+                  <div className="border-t border-slate-200 dark:border-slate-700 p-3 sm:p-4">
                     <div className="flex items-center gap-2">
                       <div className="flex-1 bg-[#F3F2F1] dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg px-4 py-2">
                         <div className="flex items-center">
@@ -521,8 +546,6 @@ export function BotIllustration() {
           </div>
         </div>
 
-        {/* Request Early Access Section */}
-        <RequestEarlyAccess />
       </div>
     </section>
   )

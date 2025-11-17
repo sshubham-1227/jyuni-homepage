@@ -499,14 +499,14 @@ export function ProductFeatures() {
             
             {/* Billing Table matching jyuni billing summary table exactly */}
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
-              <div className="overflow-x-auto -mx-4 sm:mx-0">
+              <div className="overflow-x-auto sm:mx-0">
                 <div className="inline-block min-w-full align-middle">
                   <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
                     <thead className="bg-slate-50 dark:bg-slate-700/50">
                       <tr>
                         <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Date</th>
                         <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Client</th>
-                        <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Provider</th>
+                        <th className="hidden sm:table-cell px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Provider</th>
                         <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Hours</th>
                         <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Units</th>
                         <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Subtotal</th>
@@ -516,7 +516,7 @@ export function ProductFeatures() {
                       <tr className="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">12/15/24</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Alex M.</td>
-                        <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Sarah K.</td>
+                        <td className="hidden sm:table-cell px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Sarah K.</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">2.00</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">4</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-green-600 dark:text-green-400">$320.00</td>
@@ -524,7 +524,7 @@ export function ProductFeatures() {
                       <tr className="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">12/15/24</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Jordan L.</td>
-                        <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Michael R.</td>
+                        <td className="hidden sm:table-cell px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Michael R.</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">1.50</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">3</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-green-600 dark:text-green-400">$240.00</td>
@@ -532,7 +532,7 @@ export function ProductFeatures() {
                       <tr className="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">12/14/24</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Alex M.</td>
-                        <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Sarah K.</td>
+                        <td className="hidden sm:table-cell px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">Sarah K.</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">2.50</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-slate-900 dark:text-white">5</td>
                         <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-green-600 dark:text-green-400">$400.00</td>

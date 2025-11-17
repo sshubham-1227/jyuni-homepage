@@ -89,12 +89,6 @@ export function Navigation() {
               Mental Health
             </Link>
             <Link
-              href="/mental-health"
-              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              Mental Health
-            </Link>
-            <Link
               href="/pricing"
               className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >

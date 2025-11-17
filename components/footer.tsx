@@ -1,39 +1,122 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Twitter, Linkedin, Github, Mail, Shield, Award } from "lucide-react"
+import { Twitter, Linkedin, Github, Mail, Shield, Award, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
 
 export function Footer() {
+  const router = useRouter()
+  const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!email.trim()) {
+      setSubmitStatus("error")
+      setSubmitMessage("Please enter your email address")
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus("idle")
+    setSubmitMessage("")
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setSubmitMessage(data.message || "Successfully subscribed!")
+        setEmail("")
+      } else {
+        setSubmitStatus("error")
+        setSubmitMessage(data.error || "Failed to subscribe. Please try again.")
+      }
+    } catch (error) {
+      setSubmitStatus("error")
+      setSubmitMessage("Something went wrong. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleProductLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if it's an anchor link to the product page
+    if (href.startsWith("/product#")) {
+      e.preventDefault()
+      const hash = href.split("#")[1]
+      
+      // Navigate to product page first if not already there
+      if (window.location.pathname !== "/product") {
+        router.push(href)
+        // Use a more reliable method to scroll after navigation
+        // Store the hash in sessionStorage for the product page to pick up
+        sessionStorage.setItem('scrollToSection', hash)
+      } else {
+        // Already on product page, scroll immediately
+        scrollToSection(hash)
+      }
+    }
+  }
+
+  const scrollToSection = (sectionId: string) => {
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const offset = 120 // Offset for fixed navigation bar (navbar height + padding)
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - offset
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }, 50)
+  }
+
   const productLinks = [
     { name: "Data Collection", href: "/product#data-collection" },
-    { name: "Workflows", href: "/product#workflows" },
+    { name: "Scheduling", href: "/product#scheduling" },
+    { name: "Treatment Plans", href: "/product#treatment-plans" },
     { name: "Billing", href: "/product#billing" },
-    { name: "Reporting", href: "/product#reporting" },
-    { name: "Family Portal", href: "/product#family-portal" },
-    { name: "Integrations", href: "/product#integrations" },
+    { name: "Analytics & Reporting", href: "/product#analytics" },
+    { name: "Client Management", href: "/product#client-management" },
   ]
 
-  const companyLinks = [
-    { name: "Security", href: "/security" },
-  ]
+  const companyLinks: { name: string; href: string }[] = []
 
 
   const legalLinks = [
-    { name: "Privacy Policy", href: "/product" },
-    { name: "Terms of Service", href: "/product" },
-    { name: "Cookie Policy", href: "/product" },
-    { name: "HIPAA Compliance", href: "/product" },
+    { name: "Privacy Policy", href: "https://app.jyuni.com/privacy" },
+    { name: "Terms of Service", href: "https://app.jyuni.com/terms" },
+    { name: "Cookie Policy", href: "https://app.jyuni.com/privacy" },
   ]
 
   return (
     <footer className="bg-muted/30 border-t border-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid lg:grid-cols-5 gap-8">
+        <div className="py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12">
             {/* Brand Column */}
-            <div className="lg:col-span-2">
+            <div className="sm:col-span-2 lg:col-span-2">
               <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4 inline-block">
                 Jyuni
               </Link>
@@ -44,17 +127,44 @@ export function Footer() {
 
               {/* Email Capture */}
               <div className="mb-6">
-                <h4 className="font-semibold mb-3">Stay updated</h4>
-                <div className="flex gap-2 max-w-sm">
-                  <Input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="flex-1 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all duration-200" 
-                  />
-                  <Button className="gradient-bg hover:opacity-90 transition-opacity">
-                    <Mail className="h-4 w-4" />
-                  </Button>
-                </div>
+                <h4 className="font-semibold mb-3 text-slate-900 dark:text-white">Stay updated</h4>
+                <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+                  <div className="flex gap-2 w-full sm:max-w-sm">
+                    <Input 
+                      type="email" 
+                      placeholder="Enter your email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={isSubmitting}
+                      className="flex-1 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all duration-200 disabled:opacity-50" 
+                    />
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="gradient-bg hover:opacity-90 transition-opacity disabled:opacity-50 flex-shrink-0"
+                    >
+                      {isSubmitting ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Mail className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
+                  {submitStatus !== "idle" && (
+                    <div className={`flex items-center gap-2 text-xs sm:text-sm ${
+                      submitStatus === "success" 
+                        ? "text-green-600 dark:text-green-400" 
+                        : "text-red-600 dark:text-red-400"
+                    }`}>
+                      {submitStatus === "success" ? (
+                        <CheckCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
+                      ) : (
+                        <AlertCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
+                      )}
+                      <span>{submitMessage}</span>
+                    </div>
+                  )}
+                </form>
               </div>
 
               {/* Social Links */}
@@ -83,12 +193,13 @@ export function Footer() {
 
             {/* Product Column */}
             <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-3">
+              <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Product</h4>
+              <ul className="space-y-2 sm:space-y-3">
                 {productLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
+                      onClick={(e) => handleProductLinkClick(e, link.href)}
                       className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
                     >
                       {link.name}
@@ -98,33 +209,35 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Company Column */}
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-3">
-                {companyLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Company Column - Hidden if empty */}
+            {companyLinks.length > 0 && (
+              <div>
+                <h4 className="font-semibold mb-4">Company</h4>
+                <ul className="space-y-3">
+                  {companyLinks.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Compliance Column */}
             <div>
-              <h4 className="font-semibold mb-4">Compliance</h4>
-              <div className="space-y-3">
+              <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Compliance</h4>
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                  <Shield className="h-4 w-4" />
+                  <Shield className="h-4 w-4 flex-shrink-0" />
                   <span>HIPAA Compliant</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                  <Award className="h-4 w-4" />
+                  <Award className="h-4 w-4 flex-shrink-0" />
                   <span>SOC 2 Type II</span>
                 </div>
               </div>
@@ -135,15 +248,15 @@ export function Footer() {
         <Separator />
 
         {/* Bottom Footer */}
-        <div className="py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             {/* Legal Links */}
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6">
               {legalLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
                 >
                   {link.name}
                 </Link>
@@ -151,7 +264,7 @@ export function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className="text-sm text-slate-600 dark:text-slate-400">
+            <div className="text-sm text-slate-600 dark:text-slate-400 text-center sm:text-left">
               © {new Date().getFullYear()} Jyuni. All rights reserved.
             </div>
           </div>

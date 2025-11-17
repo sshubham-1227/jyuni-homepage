@@ -80,7 +80,7 @@ export function Navigation() {
               href="/product"
               className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
-              Use Cases
+              Product
             </Link>
             <Link
               href="/mental-health"
@@ -93,12 +93,6 @@ export function Navigation() {
               className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               Pricing
-            </Link>
-            <Link
-              href="/security"
-              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              Docs
             </Link>
           </div>
 
@@ -156,7 +150,7 @@ export function Navigation() {
                 className="block px-4 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Use Cases
+                Product
               </Link>
               <Link
                 href="/mental-health"
@@ -171,13 +165,6 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Pricing
-              </Link>
-              <Link
-                href="/security"
-                className="block px-4 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Docs
               </Link>
               <div className="pt-4 border-t border-border space-y-3">
                 <Button

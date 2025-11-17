@@ -24,9 +24,8 @@ export function ProductHero() {
             in one platform
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 text-pretty mb-8 leading-relaxed">
-            From intake to outcomes, Jyuni streamlines every aspect of your ABA
-            practice with purpose-built tools for therapists, supervisors, and
-            administrators.
+            From session execution to billing, Jyuni streamlines every aspect of your ABA
+            practice with purpose-built tools for RBTs, BCBAs, and practice administrators.
           </p>
         </div>
       </div>

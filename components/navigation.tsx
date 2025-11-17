@@ -160,13 +160,6 @@ export function Navigation() {
                 Mental Health
               </Link>
               <Link
-                href="/mental-health"
-                className="block px-4 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Mental Health
-              </Link>
-              <Link
                 href="/pricing"
                 className="block px-4 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}

@@ -50,7 +50,7 @@ export function HeroSection() {
                   className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300"
                   asChild
                 >
-                  <Link href="/security">See how it works</Link>
+                  <Link href="/product">See how it works</Link>
                 </Button>
               </div>
             </div>

@@ -124,6 +124,7 @@ export function PricingTiers() {
             </Card>
           ))}
         </div>
+
       </div>
     </section>
   )

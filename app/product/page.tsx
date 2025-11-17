@@ -2,6 +2,7 @@ import { Navigation } from "@/components/navigation"
 import { ProductHero } from "@/components/product-hero"
 import { ProductFeatures } from "@/components/product-features"
 import { Footer } from "@/components/footer"
+import { ProductPageClient } from "@/components/product-page-client"
 import { createPageMetadata } from "@/lib/metadata"
 
 export const metadata = createPageMetadata({
@@ -17,12 +18,14 @@ export const metadata = createPageMetadata({
 
 export default function ProductPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-900">
-      <Navigation />
-      <div className="pt-8 md:pt-0" />
-      <ProductHero />
-      <ProductFeatures />
-      <Footer />
-    </main>
+    <ProductPageClient>
+      <main className="min-h-screen bg-white dark:bg-slate-900">
+        <Navigation />
+        <div className="pt-8 md:pt-0" />
+        <ProductHero />
+        <ProductFeatures />
+        <Footer />
+      </main>
+    </ProductPageClient>
   )
 }

@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette to match Lumos blue-purple theme */
+  /* Updated color palette to match Jyuni blue-purple theme */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(0.98 0.005 240);
@@ -39,7 +39,7 @@
   --sidebar-border: oklch(0.922 0.013 240);
   --sidebar-ring: oklch(0.55 0.18 260);
 
-  /* Updated gradient variables to match Lumos dashboard theme */
+  /* Updated gradient variables to match Jyuni dashboard theme */
   --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #a855f7 100%);
   --gradient-text: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
   --gradient-subtle: linear-gradient(

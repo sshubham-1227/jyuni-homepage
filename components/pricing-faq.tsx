@@ -4,7 +4,7 @@ export function PricingFAQ() {
   const faqs = [
     {
       question: "Is there a free trial?",
-      answer: "Yes! We offer a 14-day free trial with full access to all features. No credit card required to start.",
+      answer: "Yes! We offer a 30-day free trial with full access to all features.",
     },
     {
       question: "What's included in HIPAA compliance?",
@@ -33,8 +33,8 @@ export function PricingFAQ() {
   ]
 
   return (
-    <section className="py-20 bg-white dark:bg-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative pt-8 pb-20 md:pt-20">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-serif font-bold text-3xl lg:text-4xl mb-4 text-slate-900 dark:text-white">Frequently asked questions</h2>
           <p className="text-slate-600 dark:text-slate-300">Have a question not covered here? Contact our support team.</p>

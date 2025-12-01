@@ -1,5 +1,4 @@
 import { Navigation } from "@/components/navigation"
-import { PricingHero } from "@/components/pricing-hero"
 import { PricingTiers } from "@/components/pricing-tiers"
 import { PricingFAQ } from "@/components/pricing-faq"
 import { Footer } from "@/components/footer"
@@ -18,12 +17,29 @@ export const metadata = createPageMetadata({
 
 export default function PricingPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-900">
-      <Navigation />
-      <div className="pt-8 md:pt-0" />
-      <PricingHero />
-      <PricingTiers />
-      <PricingFAQ />
+    <main className="min-h-screen">
+      <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100 dark:bg-slate-900 mt-0">
+        {/* Background gradient */}
+        <div className="absolute inset-0 gradient-subtle-bg" />
+
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+
+        {/* Text overlay for better readability */}
+        <div className="absolute inset-0 bg-white/20 dark:bg-slate-900/50" />
+
+        <div className="relative">
+          <Navigation />
+          <div className="pt-8 md:pt-10" />
+          <PricingTiers />
+          <PricingFAQ />
+        </div>
+      </section>
       <Footer />
     </main>
   )

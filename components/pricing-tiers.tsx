@@ -29,10 +29,16 @@ export function PricingTiers() {
       monthlyPrice: 29,
       annualPrice: 319,
       features: [
-        "Everything in Starter",
-        "Billing and invoicing",
-        "Advanced reporting and insights",
-        "Built for growing ABA practices",
+        "Every feature in Starter",
+        "Comprehensive Session History",
+        "Customizable Treatment Plans",
+        "Full Assessment Management",
+        "Integrated AI Assistance",
+        "Advanced Data Analytics",
+        "One-Click Report Generation",
+        "Smart Billing & Invoicing",
+        "Deep Reporting & Insights",
+        "Built to Scale Your ABA Practice",
       ],
       cta: "Start Free Trial",
       popular: true,
@@ -43,7 +49,7 @@ export function PricingTiers() {
       monthlyPrice: 0,
       annualPrice: 0,
       features: [
-        "Everything in Growth",
+        "Every feature in Growth",
         "Custom pricing for large teams",
         "Dedicated account manager and onboarding support",
         "Tailored integrations and compliance features",
@@ -55,18 +61,18 @@ export function PricingTiers() {
   ]
 
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative pt-20 pb-8 md:pb-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Billing Toggle */}
-        <div className="flex items-center justify-center gap-4 mb-12">
-          <span className={`text-sm ${!isAnnual ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-400"}`}>Monthly</span>
+        <div className="flex items-center justify-center gap-4 mb-6 md:mb-12">
+          <span className={`text-sm font-medium ${!isAnnual ? "text-slate-900 dark:text-white" : "text-slate-700 dark:text-slate-300"}`}>Monthly</span>
           <Switch checked={isAnnual} onCheckedChange={setIsAnnual} />
-          <span className={`text-sm ${isAnnual ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-400"}`}>Annual</span>
+          <span className={`text-sm font-medium ${isAnnual ? "text-slate-900 dark:text-white" : "text-slate-700 dark:text-slate-300"}`}>Annual</span>
           {isAnnual && <span className="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">1 month free</span>}
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-14 md:gap-8">
           {tiers.map((tier, index) => (
             <Card
               key={index}
